@@ -21,26 +21,3 @@ def isCryptSolution(crypt, solution):
         return True
 
     return False
-
-
-cc = ["SEND", "MORE", "MONEY"]
-
-cs = [['O', '0'],
-    ['M', '1'],
-    ['Y', '2'],
-    ['E', '5'],
-    ['N', '6'],
-    ['D', '7'],
-    ['R', '8'],
-    ['S', '9']]
-
-fc = ["TEN", "TWO", "ONE"]
-
-fs = [['O', '1'],
-    ['T', '0'],
-    ['W', '9'],
-    ['E', '5'],
-    ['N', '4']]
-
-print(isCryptSolution(cc, cs))
-print(isCryptSolution(fc, fs))

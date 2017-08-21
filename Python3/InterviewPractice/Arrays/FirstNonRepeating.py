@@ -9,7 +9,3 @@ def firstNotRepeatingCharacter(s):
             return c
 
     return "_"
-
-print("found...", firstNotRepeatingCharacter("aba"))
-print("found...", firstNotRepeatingCharacter("abacabad"))
-print("found...", firstNotRepeatingCharacter("abacabaabacaba"))
