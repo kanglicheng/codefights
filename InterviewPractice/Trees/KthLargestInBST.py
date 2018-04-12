@@ -1,27 +1,18 @@
-#
-# Definition for binary tree:
-# class Tree(object):
-#   def __init__(self, x):
-#     self.value = x
-#     self.left = None
-#     self.right = None
-def kthLargestInBST(t, k):
-    s = [t]
-    f = []
-    c = 1
+kv = [0, None]
 
-    while s:
-        while t:
-            t = t.left
-            s.append(t)
+def kthSmallestInBST(t, k):
+    if t == None:
+        return 0
 
-        m = s.pop()
+    if kv[1]:
+        return kv[1]
 
-        if m:
-            f.append(m.value)
+    kthSmallestInBST(t.left, k)
 
-            if m.right:
-                m = m.right
-                s.append(m)
+    kv[0] += 1
+    if kv[0] == k:
+        kv[1] = t.value
 
-            c += 1
+    kthSmallestInBST(t.right, k)
+    
+    return kv[1]
