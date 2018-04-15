@@ -14,15 +14,12 @@ def sudoku2(grid):
             n = (y // d)
             q = (y % d)
 
-            # check horizontal
             if grid[x][y] != ".":
                 horz[int(grid[x][y]) - 1] += 1
 
-            # check vertical
             if grid[y][x] != ".":
                 vert[int(grid[y][x]) - 1] += 1
 
-            # check the box
             if grid[m + n][p + q] != ".":
                 box[int(grid[m + n][p + q]) - 1] += 1
 
