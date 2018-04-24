@@ -1,14 +1,11 @@
 def sumInRange(nums, queries):
-    s = 0
-    p = [0] * len(nums)
+    sum_of_pairs = 0
+    pair_sums = [0 for space in range(len(nums) + 1)]
 
-    p[0] = nums[0]
-    p.insert(0, 0)
+    for j in range(1, len(pair_sums)):
+        pair_sums[j] = pair_sums[j - 1] + nums[j - 1]
 
-    for i in range(1, len(p)):
-        p[i] = p[i - 1] + nums[i - 1]
+    for query in queries:
+        sum_of_pairs += pair_sums[query[1] + 1] - pair_sums[query[0]]
 
-    for q in queries:
-        s += (p[q[1] + 1] - p[q[0]])
-
-    return s % (10 ** 9 + 7)
+    return sum_of_pairs % (10 ** 9 + 7)

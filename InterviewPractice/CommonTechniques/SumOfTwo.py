@@ -1,12 +1,12 @@
 def sumOfTwo(a, b, v):
-    d = {}
+    hashy = {}
 
-    for n in a:
-        if abs(n - v) not in d:
-            d[abs(n - v)] = ""
+    for number in a:
+        if v - number not in hashy:
+            hashy[v - number] = True
 
-    for m in b:
-        if m in d:
-            return True
+    for number in b:
+        if number in hashy:
+            return hashy[number]
 
     return False
