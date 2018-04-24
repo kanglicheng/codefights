@@ -1,63 +1,22 @@
-#
-# Definition for binary tree:
-# class Tree(object):
-#   def __init__(self, x):
-#     self.value = x
-#     self.left = None
-#     self.right = None
-#
+foundPath = [False]
 
 def hasPathWithGivenSum(t, s):
-    if t is None:
-        if s is 0:
-            return True
+    if not t and s == 0:
+        return True
+
+    reallyHasPathWithGivenSum(t, s)
+    return foundPath[0]
+
+
+def reallyHasPathWithGivenSum(t, s):
+    if foundPath[0] == True:
+        return
+
+    if not t:
         return False
+    if not t.left and not t.right and s - t.value == 0:
+        foundPath[0] = True
+        return
 
-    d = 0
-    v = [(t, t.value)]
-
-    while v:
-        while t:
-            d += t.value
-
-            if t.left == None and t.right == None and d == s:
-                return True
-
-            if t.right:
-                v.append((t.right, d))
-
-            t = t.left
-
-        t = v.pop()
-        d = t[1]
-        t = t[0]
-
-    return False
-
-##################
-class Tree(object):
-    def __init__(self, x):
-        self.value = x
-        self.left = None
-        self.right = None
-
-a = Tree(4)
-b = Tree(1)
-c = Tree(3)
-d = Tree(-2)
-e = Tree(1)
-f = Tree(2)
-g = Tree(3)
-h = Tree(-2)
-i = Tree(-3)
-
-a.left = b
-a.right = c
-b.left = d
-d.right = g
-c.left = e
-c.right = f
-f.left = h
-f.right = i
-
-print(hasPathWithGivenSum(a, 7))
+    reallyHasPathWithGivenSum(t.left, s - t.value)
+    reallyHasPathWithGivenSum(t.right, s - t.value)
